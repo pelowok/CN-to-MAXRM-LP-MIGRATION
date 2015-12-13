@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <!-- TODO: determine use of {{ content.html_title }} tag -->
+    <title>{{ content.html_title }}</title>
+
+    <!-- TODO: determine content for {{ content.meta_description }} tag -->
+    <meta name="description" content="{{ content.meta_description }}">
+
+    {{ standard_header_includes }}
+
+    <!-- HubSpot variable definitions -->
+
+    <!-- RUM tracker is Monitis tracking for page load times and other associated data -->
+    {% boolean "rum_include" label="Use RUM tracking", value="", export_to_template_context=True %}
+
+    <!-- main_body is unique to each page. FORM begins in main_body but terminates in this template -->
+    {% raw_html "main_body" label="Main Body", value="Main body content...", export_to_template_context=True %}
+
+    <!-- end HubSpot variable definitions-->
+
+    <!-- TODO: add favicon. resource needed.-->
+    <!-- favicon goes here-->
+
+    <!-- optimizely provides some [tracking?] information -->
+    <!-- TODO: document use of optimizely script-->
+    <!-- TODO: can optimizely.js be served from CDN? -->
+    <script src="//cdn.optimizely.com/js/2179121030.js"></script>
+
+    <!-- TypeKit -->
+    <!-- TODO: get internal LogicNow license instead of vendor license for TypeKit: Myriad Pro webfont-->
+    <!-- TODO: can typekit.js be served from CDN? -->
+    <!-- this typekit license belongs to mynameiszak.com -->
+    <script src="https://use.typekit.net/gvh5frs.js"></script>
+    <script>
+        try {
+            Typekit.load({
+                async: true
+            });
+        } catch (e) {}
+    </script>
+    <!-- end TypeKit -->
+
+    <!-- TODO: can jquery-1.7.2.js be served from CDN? -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- TODO: can monitis.rum.script.js be served from CDN? -->
+    {% if widget_data.rum_include.value %}
+    <script src="//rum.monitis.com/get/jsbenchmark.min.js?id=5008" type="text/javascript" async></script>
+    {% endif %}
+
+    <!-- begin Geolocation and distributor assignment -->
+    <!-- TODO: test assumption - geolocate.js can run async to distributor.js. confirm race conditions do not apply -->
+    <!-- TODO: test extracted geolocation script geolocate.js-->
+    <script type="text/javascript" src="scripts/geolocate.js"></script>
+
+    <!--<script type="text/javascript" src="http://cdn2.hubspot.net/hub/120076/landing-pages-test/resources/en-v5-max-remote-network-monitoring-and-management-fs_2a9317dcb1dd62a0185f322100c59884185dfd00.js"></script>-->
+    <!--<script type="text/javascript" src="//cdn2.hubspot.net/hub/120076/landing-pages-test/resources/en-v6-max-remote-support-software-geo_extra_a89ee17e5c2561e42e775635275bee0dd8600eb5.js"></script>-->
+    <!-- TODO: new distributor.js needed per spec from WD-#ticketnumberhere# -->
+    <script type="text/javascript" src="scripts/distributor.js"></script>
+
+    <!-- end Geolocation and distributor assignment -->
+
+    <!-- begin form validation script -->
+    <!-- TODO: validation.js needs complete refactor to reflect variables and form fields in hybrid form-->
+    <script type="text/javascript" src="scripts/validation.js"></script>
+    <!-- end form validation script -->
+
+
+    <!-- begin STYLE definitions -->
+    <!-- TODO: SWAP css files from old_style_2.cs  to  main.css -->
+    <!-- TODO: serve main.css from CDN -->
+    <!-- TODO: deal with specific artwork as div class background url's in template. !!! these should be hubspot vars, not css classes -->
+    <!-- TODO: review CSS from old controlnow forms, refactor to essentials -->
+    <!--<link rel="stylesheet" href="http://cdn2.hubspot.net/hub/120076/file-2474173293-css/control_now/css/old_style_2.cs" />-->
+    <link rel="stylesheet" href="styles/main.css" />
+
+    <!-- TODO: can the ie7 style script move into css? do we need to support ie7 ?-->
+    <!--[if IE 7]>
+    <style>
+        .checkText {
+            float: none;
+        }
+    </style>
+    <![endif]-->
+
+    <!--  end STYLE definitions -->
+
+</head>
+<body>
+
+</body>
+</html>

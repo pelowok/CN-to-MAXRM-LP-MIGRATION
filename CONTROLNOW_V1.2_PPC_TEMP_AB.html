@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ content.html_title }}</title>
+    <meta name="description" content="{{ content.meta_description }}">
+    {{ standard_header_includes }}
+    {% boolean "rum_include" label="Use RUM tracking", value="", export_to_template_context=True %}
+    {% raw_html "main_body" label="Main Body", value="Main body content...", export_to_template_context=True %}
+    <link rel="shortcut icon" href="https://d2zkoeby40ms73.cloudfront.net/sites/controlnow/files/favicon_1.ico" type="image/vnd.microsoft.icon" />
+    <script src="//cdn.optimizely.com/js/2179121030.js"></script>
+    <!-- TypeKit -->
+    <script type="text/javascript" src="https://use.typekit.com/zqq5zob.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <!--<script type="text/javascript" src="http://www.gfi.com/template/js/smartleads.js"></script> -->
+    {% if widget_data.rum_include.value %}
+    <script src="//rum.monitis.com/get/jsbenchmark.min.js?id=5008" type="text/javascript" async></script>
+    {% endif %}
+
+    <script>
+        $(document).ready(function() {
+            $.get( "https://www.maxfocus.com/geo/country", function( data ) {
+                $("#country").val(data);
+                $("#country").trigger("change");
+                if(data == "US"){
+                    $.get( "https://www.maxfocus.com/geo/region", function( data ) {
+                        regionCode = "US-"+data;
+                        $("#state").val(regionCode);
+                    });
+                }
+                if(data == "CA"){
+                    $.get( "https://www.maxfocus.com/geo/region", function( data ) {
+                        regionCode = "CA-"+data;
+                        $("#state").val(regionCode);
+                    });
+                }
+
+            });
+            optIn();
+        });
+
+        function geoip_country_code(){
+            //alert (window.country_code);
+        }
+
+        function geoip_country_name(){
+            //alert (window.country_name);
+        }
+
+        function geoip_city(){
+            //alert (window.country_name);
+        }
+
+        function optIn() {
+            var countryname = $("#country").val();
+            if (countryname == 'GB' ||
+                    countryname == 'CY' ||
+                    countryname == 'CZ' ||
+                    countryname == 'DK' ||
+                    countryname == 'EE' ||
+                    countryname == 'FI' ||
+                    countryname == 'DE' ||
+                    countryname == 'GR' ||
+                    countryname == 'HU' ||
+                    countryname == 'IS' ||
+                    countryname == 'IE' ||
+                    countryname == 'IT' ||
+                    countryname == 'LV' ||
+                    countryname == 'LI' ||
+                    countryname == 'LU' ||
+                    countryname == 'MT' ||
+                    countryname == 'FR' ||
+                    countryname == 'LT' ||
+                    countryname == 'ME' ||
+                    countryname == 'NL' ||
+                    countryname == 'NO' ||
+                    countryname == 'PL' ||
+                    countryname == 'PT' ||
+                    countryname == 'RO' ||
+                    countryname == 'RS' ||
+                    countryname == 'SK' ||
+                    countryname == 'SI' ||
+                    countryname == 'ES' ||
+                    countryname == 'SE' ||
+                    countryname == 'MK' ||
+                    countryname == 'TR') {
+                $('#opt_mail').attr('checked', false);
+            } else {
+                $('#opt_mail').attr('checked', true);
+
+            }
+
+        }
+
+    </script>
+
+    <!-- Style -->
+    <link rel="stylesheet" href="http://cdn2.hubspot.net/hub/120076/file-2474173293-css/control_now/css/old_style_2.cs"  />
+    <!--[if IE 7]>
+    <style>
+        .checkText {
+            float: none;
+        }
+    </style>
+    <![endif]-->
+    <!-- Javascript -->
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://trials.controlnow.com/hs-fs/hub/120076/file-2399726915-js/control_now/js/jQuery.dPassword.js"></script>
+    <script type="text/javascript" src="http://trials.controlnow.com/hs-fs/hub/120076/file-2400150909-js/control_now/js/jquery.placeholder.js"></script>
+    <script type="text/javascript" src="http://cdn2.hubspot.net/hub/120076/file-2098488177-js/control_now/js/utils.js"></script>
+    <script type="text/javascript" src="http://trials.controlnow.com/hs-fs/hub/120076/file-2399726870-js/control_now/js/form.js"></script>
+    <script type="text/javascript" src="http://trials.controlnow.com/hs-fs/hub/120076/file-2399726910-js/control_now/js/gaclientid.js"></script>
+
+    <style>
+        #cloudLogo {
+            background: url(http://trials.maxfocus.com/hubfs/maxrm/maxrmLogo240x40.png) no-repeat;
+            width: 240px;
+            height: 40px;
+            position: absolute;
+            top: 35px;
+            left: 20px;
+        }
+
+        #cloudLogo a {
+            padding-right: 240px;
+        }
+
+    </style>
+
+
+
+</head>
+<body>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-M3ZJJ3"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M3ZJJ3');</script>
+<!-- End Google Tag Manager -->
+
+{{ widget_data.main_body.value }}
+
+<div id="formBottom">&nbsp;</div>					</div>
+<div class="formbg" style="height:510px"></div>
+</div>
+</div>
+<div id="bodyBottom">&nbsp;</div>
+</div>
+<div id="footer">
+
+    <!-- social proofing stuff --->
+    <div id="footer-proofing">
+        <div id="footer-proofing-left">
+            <div id="footer-proofing-content">
+                <span class="leftQuote"></span>
+                <div class="awardText">
+                        <span>
+                            With [MaxRM] we have one central place to manage everything and we also get to eliminate 4 servers.
+                            <span class="rightQuote"></span>
+                        </span><br>
+                </div>
+                <span class="awardAuthor">Ron Davis, Sr Systems Admin, Mimeo</span>
+            </div>
+        </div>
+        <div id="footer-proofing-right">
+            <div style="width:100px; height:100%; float: left; background:url(http://cdn2.hubspot.net/hub/120076/file-2482421507-jpg/control_now/images/windows-networking-award-1.jpg) no-repeat left"></div>
+            <div style="width:115px; height:100%; float: left; background:url(http://cdn2.hubspot.net/hub/120076/file-2482811359-jpg/control_now/images/SME-Security-Solution-of-the-Year.jpg) no-repeat center"></div>
+            <div style="width:115px; height:100%; float: left; background:url(http://cdn2.hubspot.net/hub/120076/file-2482381477-jpg/control_now/images/Cloud-Security-Solution-of-the-Year-1.jpg) no-repeat center"></div>
+            <div style="width:95px; height:100%; float: left; background:url(http://cdn2.hubspot.net/hub/120076/file-2482381472-jpg/control_now/images/stevie-award-1.jpg) no-repeat right"></div>
+
+        </div>
+    </div><!-- end social proofing-->
+
+    <div style="padding:0 24px 0 24px">
+        <div id="copyright">Copyright &copy; 2015 LogicNow Ltd <br><br></div>
+        <div id="footerMenu">
+            <a href="https://www.maxfocus.com/" target="_blank">maxfocus.com</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+            <a href="https://www.maxfocus.com/contact-us" target="_blank">Contact</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+            <a href="https://support.maxfocus.com/" target="_blank">Support</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+            <a href="https://www.maxfocus.com/legal/terms-of-use" target="_blank">Legal</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+            <a href="https://www.maxfocus.com/legal/privacy-policy" target="_blank">Privacy</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+            <a href="https://www.maxfocus.com/legal/cookie-policy" target="_blank">Cookies</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+            <a href="https://www.maxfocus.com/platform/eula" target="_blank">EULA</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+            <a href="https://www.maxfocus.com/sitemap" target="_blank">Site map</a>
+        </div>
+        <br/><br/>
+    </div>
+</div>
+</div>
+
+
+{{ standard_footer_includes }}
+</body>
+</html>

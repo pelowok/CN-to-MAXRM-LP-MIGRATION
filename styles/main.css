@@ -1,0 +1,12 @@
+#cloudLogo {
+    background: url(http://trials.maxfocus.com/hubfs/maxrm/maxrmLogo240x40.png) no-repeat;
+    width: 240px;
+    height: 40px;
+    position: absolute;
+    top: 35px;
+    left: 20px;
+}
+
+#cloudLogo a {
+    padding-right: 240px;
+}
